@@ -1,4 +1,4 @@
-package com.example.mvvm_workout
+package com.eugcapt.data
 
 import org.junit.Test
 

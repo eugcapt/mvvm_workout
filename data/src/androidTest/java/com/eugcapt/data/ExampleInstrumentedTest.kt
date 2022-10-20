@@ -1,4 +1,4 @@
-package com.example.mvvm_workout
+package com.eugcapt.data
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.mvvm_workout", appContext.packageName)
+        assertEquals("com.eugcapt.data.test", appContext.packageName)
     }
 }

@@ -15,6 +15,7 @@ import com.eugcapt.mvvm_workout.data.repository.UserRepositoryImpl
 import com.eugcapt.mvvm_workout.data.storage.models.User
 import com.eugcapt.mvvm_workout.data.storage.sharedprefs.SharedPrefsUserStorage
 import com.eugcapt.mvvm_workout.domain.models.UserName
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
    // private val userStorage = UserStorage()
 
 
-    private lateinit var vm: MainViewModel
+    private  val vm: MainViewModel by viewModel<MainViewModel>()
 
 
     @SuppressLint("SetTextI18n")
@@ -31,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Log.e("AAA", "Activity created")
-
-        vm = ViewModelProvider(this, MainViewModelFactory(this)).get(MainViewModel::class.java)
 
         val dataTextView = findViewById<TextView>(R.id.dataTextView)
         val dataEditTextVIew = findViewById<EditText>(R.id.dataEditTextVIew)
@@ -45,12 +44,13 @@ class MainActivity : AppCompatActivity() {
 
 
         receiveButton.setOnClickListener{
-            val text = dataEditTextVIew.text.toString()
-            vm.save(text)
+            vm.load()
         }
 
         sendButton.setOnClickListener {
-          vm.load()
+            val text = dataEditTextVIew.text.toString()
+            vm.save(text)
+
         }
     }
 }
